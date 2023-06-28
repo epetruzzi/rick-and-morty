@@ -34,5 +34,9 @@
 
 </ion-row>
 </ion-grid>
+<ion-infinite-scroll treshold="25%"  position="bottom" (ion-infinit)="getCharacters($event)">
+  <ion-infinite-scroll-content  ></ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
 </div>
 </ion-content>
