@@ -4,9 +4,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content mode="ios">
 <div class="glass-content">
 <ion-grid>
+
+<ion-row>
+  <ion-col routerLink="/character-detail/{{characters}}" size="12" class="d-flex-center">
+    <ion-searchbar placeholder="Buscar"  [(ngModel)]="params.name" (ionInput)="searchCharacters()" [debounce]="250" ></ion-searchbar>
+  </ion-col>
+</ion-row>
+
 <ion-row>
 <ion-col *ngFor="let c of characters" size-lg="6" size-md="6" size-s="12" size="12"> 
 
@@ -34,9 +41,9 @@
 
 </ion-row>
 </ion-grid>
-<ion-infinite-scroll treshold="25%"  position="bottom" (ion-infinit)="getCharacters($event)">
-  <ion-infinite-scroll-content  ></ion-infinite-scroll-content>
+<ion-infinite-scroll threshold="25%" position="bottom" (ionInfinite)="getCharacters($event)">
+  <ion-infinite-scroll-content >
+  </ion-infinite-scroll-content>
 </ion-infinite-scroll>
-
 </div>
 </ion-content>

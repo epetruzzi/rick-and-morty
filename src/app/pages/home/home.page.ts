@@ -13,6 +13,7 @@ export class HomePage implements OnInit {
 
   characters: any[] = [];
   params = {} as any;
+  event$: any;
 
   constructor(
     private RymserviceSvc: RymserviceService,
@@ -24,6 +25,8 @@ export class HomePage implements OnInit {
     this.getCharacters()
 
   }
+
+  // Obtener personajes
 
   getCharacters(event?: any) {
 this.params.page += 1;
@@ -46,4 +49,32 @@ this.RymserviceSvc.getCharacters(this.params).subscribe({
 })
   }
 
+  // Obtener personajes
+
+searchCharacters() {
+  this.params.page = 1;
+  
+  this.RymserviceSvc.getCharacters(this.params).subscribe({
+  
+    next: (res: any) => {
+  
+      this.characters = res.results
+      
+  
+      
+  
+    },
+  
+    error: () => {
+      
+    }
+  
+  })
+    }
+
 }
+
+
+  
+  
+  
